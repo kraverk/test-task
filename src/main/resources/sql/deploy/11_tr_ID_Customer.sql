@@ -1,0 +1,9 @@
+CREATE TRIGGER tr_ID_Customer INSTEAD OF DELETE ON Customer  
+REFERENCING OLD ROW AS d 
+FOR EACH ROW 
+BEGIN ATOMIC
+	DELETE 
+	  FROM tHuman
+	 WHERE tHuman.id = d.id;
+END;
+
